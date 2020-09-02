@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sayso">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        android:hardwareAccelerated="true"
+        tools:targetApi="m">
+
+        <activity android:name=".ui.activities.SaySo"
+            android:configChanges = "orientation|keyboard|keyboardHidden|screenLayout|screenSize"/>
+
+        <activity android:name=".ui.activities.NewTabActivity"
+            android:configChanges = "orientation|keyboard|keyboardHidden|screenLayout|screenSize"/>
+
+    </application>
+
+</manifest>
