@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             return;
         }
 
-        saySo.isSurveyAvailable(this, etPartnerId.getText().toString().trim(), etRidId.getText().toString().trim());
+        saySo.configureSaySo(this, etPartnerId.getText().toString().trim(), etRidId.getText().toString().trim());
     }
 
     public void onStartClick(View view) {

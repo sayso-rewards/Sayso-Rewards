@@ -50,7 +50,7 @@ public class SaySo extends Activity {
 
     public SharedPreferences.Editor editor;
 
-    public void isSurveyAvailable(Activity instance, String partnerId, String rid) {
+    public void configureSaySo(Activity instance, String partnerId, String rid) {
 
         ProgressDialog progressDialog = new ProgressDialog(instance);
         progressDialog.setMessage("Please wait...");
