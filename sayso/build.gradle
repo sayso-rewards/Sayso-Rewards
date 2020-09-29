@@ -1,38 +1,6 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-
-ext {
-    bintrayRepo = 'SaySo' // Name of the Bintray repo you created
-    bintrayName = 'com.sayso:sayso' // Bintray package name
-
-    publishedGroupId = 'com.sayso'
-    // Group ID of the SDK which will be added in implementation line of gradle
-    artifact = 'sayso'
-    // Artifact ID of the SDK which will be added in implementation line of gradle
-    libraryVersion = '0.0.1' // Version of the library you created in Bintray
-
-    libraryName = 'SaySo' // It is generally the module name
-    libraryDescription = 'We are about to test a new security service called Iovation.'
-
-    gitUrl = ''
-
-    developerName = 'SaySo'
-    developerEmail = 'rfg.offerwall@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-
-    //Bintray Credentials
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-    bintrayUsername = properties.getProperty('BINTRAY_USERNAME')
-    bintrayUserOrg = properties.getProperty('BINTRAY_ORG')
-    bintrayApiKey = properties.getProperty('BINTRAY_API_KEY')
-}
 
 android {
     compileSdkVersion var1
@@ -42,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         publishNonDefault true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -80,4 +48,3 @@ dependencies {
 
     implementation 'com.loopj.android:android-async-http:1.4.9'
 }
-apply from: 'bintray.script'

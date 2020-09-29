@@ -42,7 +42,11 @@ public class MainActivity extends Activity {
     }
 
     public void onStartClick(View view) {
-        saySo.displaySurveyInWebView();
+        if (saySo.isSurveyAvailable(this)) {
+            saySo.displaySurveyInWebView();
+        }else{
+            Toast.makeText(this, "Survey not Available", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

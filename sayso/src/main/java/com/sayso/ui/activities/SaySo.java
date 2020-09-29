@@ -68,17 +68,33 @@ public class SaySo extends Activity {
 
                 if (response != null && response.body() != null) {
                     if (response.body().getSurveysAvailable()) {
+                        sharedpreferences = mInstance.getSharedPreferences("SaySo", Context.MODE_PRIVATE);
+                        editor = sharedpreferences.edit();
+
+                        editor.putBoolean(SdkConstants.IsSurveyAvailable, true);
+                        editor.apply();
+
                         Toast.makeText(mInstance, "Survey available", Toast.LENGTH_SHORT).show();
                     } else {
+                        sharedpreferences = mInstance.getSharedPreferences("SaySo", Context.MODE_PRIVATE);
+                        editor = sharedpreferences.edit();
+
+                        editor.putBoolean(SdkConstants.IsSurveyAvailable, false);
+                        editor.apply();
+
                         Toast.makeText(mInstance, "Survey not available", Toast.LENGTH_SHORT).show();
                     }
                 }
-
-                Toast.makeText(mInstance, "Configured Successfully", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<SurveyAvailabilityModel> call, Throwable t) {
+                sharedpreferences = mInstance.getSharedPreferences("SaySo", Context.MODE_PRIVATE);
+                editor = sharedpreferences.edit();
+
+                editor.putBoolean(SdkConstants.IsSurveyAvailable, false);
+                editor.apply();
+
                 progressDialog.dismiss();
                 Log.d("onFailure online", t.toString());
             }
@@ -217,6 +233,17 @@ public class SaySo extends Activity {
     @Override
     public void onBackPressed() {
       super.onBackPressed();
+    }
+
+    @SuppressLint("CommitPrefEdits")
+    public boolean isSurveyAvailable(Activity activity) {
+        sharedpreferences = activity.getSharedPreferences("SaySo", Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
+        boolean isSurveyAvailable = sharedpreferences.getBoolean(SdkConstants.IsSurveyAvailable, false);
+        editor.clear();
+        editor.apply();
+
+        return isSurveyAvailable;
     }
 
     @SuppressLint("CommitPrefEdits")
